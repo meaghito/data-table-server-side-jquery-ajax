@@ -1,6 +1,6 @@
     let table;
     $(document).ready(function() {
-        tableUmum = $('#data_table').DataTable({
+        table = $('#data_table').DataTable({
             "responsive": true,
             "processing": true,
             "serverSide": true,
@@ -36,3 +36,4 @@
 
             // "dom": 'Blfrtip',
         });
+       
