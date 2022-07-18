@@ -1,0 +1,38 @@
+    let table;
+    $(document).ready(function() {
+        tableUmum = $('#data_table').DataTable({
+            "responsive": true,
+            "processing": true,
+            "serverSide": true,
+            "lengthChange": true,
+            "ordering": true,
+            "searching": true,
+            "autoWidth": false,
+            "info": true,
+            "order": [],
+
+            "ajax": {
+                "url": "<?php echo base_url('data-table'); ?>",
+                "type": "POST"
+            },
+
+            "columnDefs": [{
+                "targets": [0],
+                "orderable": false,
+            }],
+
+            "columnDefs": [{
+                "targets": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+                "className": 'text-center',
+            }],
+
+            "lengthMenu": [
+                [10, 25, 50, -1],
+                [10, 25, 50, "All"]
+            ],
+
+            // "bPaginate": true,
+            // "sPaginationType": "full_numbers",
+
+            // "dom": 'Blfrtip',
+        });
