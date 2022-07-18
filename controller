@@ -1,0 +1,35 @@
+public function data_table()
+    {
+        if ($this->input->is_ajax_request() == true) {
+        
+            $datatable = $this->DataTableModel->get_datatables();
+
+            $data = array();
+            $no   = @$_POST['start'];
+
+            foreach ($datatable as $n) {
+
+                $no++;
+                $row    = array();
+
+                $row[]  = $no;
+                $row[]  = $n->nama_makanan;
+                $row[]  = $n->harga_makanan;
+                $row[]  = '
+                        <a class="btn btn-warning btn-xs" id="btn-edit-mblb-h" title="Edit ' . $n->harga_makanan . '"><i class="fa fa-edit"></i></a>
+                        <a class="btn btn-default btn-xs pull-right" id="btn-del-mblb-h" title="Hapus ' . $n->harga_makanan . '"><i class="fa fa-trash"></i></a>
+                    ';
+                $data[] = $row;
+            }
+
+            $output = array(
+                "draw"              => $_POST['draw'],
+                "recordsTotal"      => $this->MblbModel->count_all(),
+                "recordsFiltered"   => $this->MblbModel->count_filtered(),
+                "data"              => $data,
+            );
+
+            $this->output->set_content_type('application/json')->set_output(json_encode($output, 200));
+        } else {
+            exit('Ajax say:: Maaf data tidak bisa ditampilkan, lihat Web Developer!');
+        }
