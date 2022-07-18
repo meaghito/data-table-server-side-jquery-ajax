@@ -24,8 +24,8 @@ public function data_table()
 
             $output = array(
                 "draw"              => $_POST['draw'],
-                "recordsTotal"      => $this->MblbModel->count_all(),
-                "recordsFiltered"   => $this->MblbModel->count_filtered(),
+                "recordsTotal"      => $this->DataTableModel->count_all(),
+                "recordsFiltered"   => $this->DataTableModel->count_filtered(),
                 "data"              => $data,
             );
 
